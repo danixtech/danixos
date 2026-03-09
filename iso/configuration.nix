@@ -1,21 +1,21 @@
-{ config, pkgs, modulesPath, ... }:
+{ config, pkgs, modulesPath, danix-kit, lib, ... }:
 
 {
-  imports =
-    [
-      "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
-    ];
-
+  imports = [
+    "${modulesPath}/installer/cd-dvd/installation-cd-base.nix"
+  ];
   system.stateVersion = "24.11";
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
 
   networking.hostName = "danixos";
 
-  # Root login allowed for live environment
-  users.users.root.initialPassword = "danix";
+  isoImage.isoName = lib.mkForce "danixos-alpha-${config.system.nixos.label}.iso";
+  isoImage.volumeID = lib.mkForce "DANIXOS";
 
-  services.getty.autologinUser = "root";
+  users.users.root.password = "";
+
+  services.getty.autologinUser = lib.mkForce "root";
 
   environment.systemPackages = with pkgs; [
 
@@ -39,6 +39,7 @@
     pciutils
     usbutils
     lm_sensors
+    dmidecode
 
     # CLI utilities
     jq
@@ -51,10 +52,15 @@
     stress-ng
 
     # Custom Tools
-    danix-kit
+    danix-kit.packages.${pkgs.system}.default
 
   ];
 
   services.openssh.enable = true;
+
+  programs.bash.loginShellInit = ''
+    echo "Welcome to DanixOS"
+    danix doctor
+  '';
 
 }
