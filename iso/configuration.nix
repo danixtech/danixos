@@ -33,6 +33,7 @@
     hdparm
     fio
     pv
+    storcli
 
     # System inspection
     lshw
@@ -59,8 +60,10 @@
   services.openssh.enable = true;
 
   programs.bash.loginShellInit = ''
-    echo "Welcome to DanixOS"
-    danix doctor
+    echo
+    echo "DanixOS Hardware Certification Environment"
+    echo
+    danix
   '';
 
 }
