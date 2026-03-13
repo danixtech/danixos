@@ -17,6 +17,8 @@
 
   services.getty.autologinUser = lib.mkForce "root";
 
+  nixpkgs.config.allowUnfree = true;
+
   environment.systemPackages = with pkgs; [
 
     # Core utilities
