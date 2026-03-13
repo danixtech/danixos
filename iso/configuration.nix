@@ -1,16 +1,15 @@
-{ config, pkgs, modulesPath, danix-kit, lib, ... }:
+{ config, pkgs, modulesPath, danix-kit, lib, buildId, ... }:
 
 {
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-base.nix"
   ];
-  system.stateVersion = "24.11";
 
-  boot.kernelPackages = pkgs.linuxPackages;
+  system.stateVersion = "24.11";
 
   networking.hostName = "danixos";
 
-  isoImage.isoName = lib.mkForce "danixos-alpha-${config.system.nixos.label}.iso";
+  isoImage.isoName = lib.mkForce "${buildId}.iso";
   isoImage.volumeID = lib.mkForce "DANIXOS";
 
   users.users.root.password = "";
@@ -20,7 +19,6 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-
     # Core utilities
     bash
     coreutils
@@ -56,7 +54,6 @@
 
     # Custom Tools
     danix-kit.packages.${pkgs.system}.default
-
   ];
 
   services.openssh.enable = true;
@@ -67,5 +64,4 @@
     echo
     danix
   '';
-
 }
