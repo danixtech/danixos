@@ -61,9 +61,8 @@
 
   programs.bash.loginShellInit = ''
     echo
-    /run/current-system/sw/bin/danix-banner
+    danix-banner
     echo
     danix
   '';
-  /run/current-system/sw/bin/danix-banner
 }

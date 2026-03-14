@@ -24,7 +24,7 @@ printf "=============================================================\n"
 printf "\n"
 
 # Show quick hardware info
-/run/current-system/sw/share/danix/modules/system-summary.sh
+danix-system-summary
 
 #
 # vim: set syntax=bash
