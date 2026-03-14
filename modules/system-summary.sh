@@ -19,8 +19,8 @@ RAM=$(free -h | awk '/Mem:/ {print $2}')
 DISKS=$(lsblk -d -o NAME | grep -v NAME | wc -l)
 
 printf "\n"
-printf "System Summary\n"
-printf "--------------\n"
+printf "%s\n" "System Summary"
+printf "%s\n" "--------------"
 printf " Hostname : %s\n" "$HOST"
 printf " CPU      : %s\n" "$CPU"
 printf " Cores    : %s\n" "$CORES"

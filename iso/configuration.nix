@@ -54,7 +54,7 @@
 
     # Custom Tools
     danix-kit.packages.${pkgs.system}.default
-    (import ../pkgs/banner { inherit pkgs; })
+    (import ../pkgs/banner { inherit pkgs buildId; })
   ];
 
   services.openssh.enable = true;
@@ -63,6 +63,7 @@
     echo
     danix-banner
     echo
+    sleep 2
     danix
   '';
 }
