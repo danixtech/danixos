@@ -20,10 +20,9 @@ cat << "EOF"
 
                    Live Utility Environment
 
-Version : __DANIX_VERSION__
-Build   : __DANIX_BUILD__
 EOF
 printf "=============================================================\n"
+printf "Version : __DANIX_VERSION__"
 printf "\n"
 
 # Show quick hardware info

@@ -60,6 +60,7 @@
   services.openssh.enable = true;
 
   programs.bash.loginShellInit = ''
+    clear
     echo
     danix-banner
     echo
