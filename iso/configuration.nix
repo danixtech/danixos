@@ -9,6 +9,17 @@
 
   networking.hostName = "danixos";
 
+  boot.loader.grub = {
+    theme = lib.mkForce null;
+    splashImage = /etc/danixos-grub-background.png;
+    gfxmode = "1920x1080";
+    extraConfig = ''
+      set menu_color_normal=white/black
+      set menu_color_highlight=cyan/black
+    '';
+  };
+
+
   isoImage.edition = lib.mkForce "DanixOS ${version} (${buildDate})";
   isoImage.isoName = lib.mkForce "${buildId}.iso";
   isoImage.volumeID = lib.mkForce "DANIXOS";

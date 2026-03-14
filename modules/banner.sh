@@ -31,6 +31,8 @@ printf "\n"
 # Show quick hardware info
 danix-system-summary
 
+printf "Launching DanixKit - Hardware Certification Toolkit..."
+
 #
 # vim: set syntax=bash
 #
