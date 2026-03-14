@@ -54,14 +54,16 @@
 
     # Custom Tools
     danix-kit.packages.${pkgs.system}.default
+    (import ../pkgs/banner { inherit pkgs; })
   ];
 
   services.openssh.enable = true;
 
   programs.bash.loginShellInit = ''
     echo
-    echo "DanixOS Hardware Certification Environment"
+    /run/current-system/sw/bin/danix-banner
     echo
     danix
   '';
+  /run/current-system/sw/bin/danix-banner
 }
