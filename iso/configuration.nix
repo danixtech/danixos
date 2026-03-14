@@ -9,6 +9,7 @@
 
   networking.hostName = "danixos";
 
+  isoImage.edition = lib.mkForce "DanixOS ${version} (${buildDate})";
   isoImage.isoName = lib.mkForce "${buildId}.iso";
   isoImage.volumeID = lib.mkForce "DANIXOS";
 
@@ -17,6 +18,10 @@
   services.getty.autologinUser = lib.mkForce "root";
 
   nixpkgs.config.allowUnfree = true;
+
+  environment.etc."danixos-build".text = buildId;
+  environment.etc."danixos-grub-background.png".source =
+    ../assets/danixos-grub-background.png;
 
   environment.systemPackages = with pkgs; [
     # Core utilities
