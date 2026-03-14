@@ -28,7 +28,7 @@
           ./iso/configuration.nix
         ];
 
-        specialArgs = { inherit danix-kit buildId; };
+        specialArgs = { inherit danix-kit buildId version buildDate; };
       };
 
       danixos-netboot = lib.nixosSystem {
@@ -39,7 +39,7 @@
           "${nixpkgs}/nixos/modules/installer/netboot/netboot-minimal.nix"
         ];
 
-        specialArgs = { inherit danix-kit buildId; };
+        specialArgs = { inherit danix-kit buildId version buildDate; };
       };
 
     };

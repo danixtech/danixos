@@ -1,4 +1,4 @@
-{ config, pkgs, modulesPath, danix-kit, lib, buildId, ... }:
+{ config, pkgs, modulesPath, danix-kit, lib, buildId, version, buildDate, ... }:
 
 {
   imports = [
@@ -19,7 +19,9 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  environment.etc."danixos-version".text = version;
   environment.etc."danixos-build".text = buildId;
+  environment.etc."danixos-build-date".text = buildDate;
   environment.etc."danixos-grub-background.png".source =
     ../assets/danixos-grub-background.png;
 

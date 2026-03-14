@@ -28,9 +28,6 @@ printf " Memory   : %s\n" "$RAM"
 printf " Disks    : %s detected\n" "$DISKS"
 printf "\n"
 
-BUILD="$(cat /etc/danixos-build 2>/dev/null || echo unknown)"
-
-printf "DanixOS Build : %s\n" "$BUILD"
 
 #
 # vim: set syntax=bash

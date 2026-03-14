@@ -6,6 +6,9 @@
 # DANIX_MENU: false
 # ======================================================
 
+# Build Version
+BUILD="$(cat /etc/danixos-build 2>/dev/null || echo unknown)"
+
 # Menu Header
 printf "\n"
 printf "=============================================================\n"
@@ -22,7 +25,7 @@ cat << "EOF"
 
 EOF
 printf "=============================================================\n"
-printf "Version : __DANIX_VERSION__"
+printf "Build Version: %s\n" "$BUILD"
 printf "\n"
 
 # Show quick hardware info
