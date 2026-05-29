@@ -3,7 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    danix-kit.url = "path:/home/dan/Repos/github/danixtech/danix-kit";
+    #danix-kit.url = "path:/home/dan/Repos/github/danixtech/danix-kit";
+    danix-kit.url = "github:danixtech/danix-kit";
   };
 
   outputs = { self, nixpkgs, danix-kit }:
