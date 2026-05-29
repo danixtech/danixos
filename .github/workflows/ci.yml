@@ -13,6 +13,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Checkout danix-kit
+        uses: actions/checkout@v4
+        with:
+          repository: danixtech/danix-kit
+          token: ${{ secrets.DANIXKITTOKEN }}
+          path: danix-kit
       - uses: cachix/install-nix-action@v27
 
       - name: Build ISO
