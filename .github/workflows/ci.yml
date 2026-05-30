@@ -20,6 +20,10 @@ jobs:
           repository: danixtech/danix-kit
           token: ${{ secrets.DANIXKITTOKEN }}
           path: danix-kit
+      - name: Verify access
+        run: |
+          git ls-remote https://x-access-token:${{ secrets.DANIXKITTOKEN }}@github.com/danixtech/danix-kit.git
+
       - uses: cachix/install-nix-action@v27
       - name: Git status
         run: |
