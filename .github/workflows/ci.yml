@@ -11,10 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Verify access
-        run: |
-          git ls-remote https://x-access-token:${{ secrets.DANIXKITTOKEN }}@github.com/danixtech/danix-kit.git
-
       - name: Configure Nix GitHub token
         run: |
           mkdir -p ~/.config/nix
@@ -27,34 +23,14 @@ jobs:
         with:
           submodules: recursive
           token: ${{ secrets.DANIXKITTOKEN }}
-      - name: Checkout danix-kit
-        uses: actions/checkout@v4
-        with:
-          repository: danixtech/danix-kit
-          token: ${{ secrets.DANIXKITTOKEN }}
-          path: danix-kit
+
+      #- name: Checkout danix-kit
+      #  uses: actions/checkout@v4
+      #  with:
+      #    repository: danixtech/danix-kit
+      #    token: ${{ secrets.DANIXKITTOKEN }}
+      #    path: danix-kit
       - uses: cachix/install-nix-action@v27
-      - name: Git status
-        run: |
-          ls -lah danix-kit
-          test -f danix-kit/flake.nix && echo "flake exists"
-          git status
-          git ls-files | grep danix-kit | head
-
-      - name: Show workspace
-        run: |
-          pwd
-          ls -lah
-          find . -maxdepth 2 -type d
-
-      - name: Show flake files
-        run: |
-          cat flake.nix
-          echo
-          cat flake.lock
-      - name: Show flake metadata
-        run: |
-          nix flake metadata
 
       - name: Build ISO
         run: |
@@ -65,3 +41,4 @@ jobs:
         with:
           name: danixos-iso
           path: result/*
+          retention-days: 14
