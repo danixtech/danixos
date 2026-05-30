@@ -34,6 +34,15 @@ jobs:
           ls -lah
           find . -maxdepth 2 -type d
 
+      - name: Show flake files
+        run: |
+          cat flake.nix
+          echo
+          cat flake.lock
+      - name: Show flake metadata
+        run: |
+          nix flake metadata
+
       - name: Build ISO
         run: |
           nix build .#iso
