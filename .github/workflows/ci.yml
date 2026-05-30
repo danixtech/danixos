@@ -21,6 +21,12 @@ jobs:
           token: ${{ secrets.DANIXKITTOKEN }}
           path: danix-kit
       - uses: cachix/install-nix-action@v27
+      - name: Git status
+        run: |
+          ls -lah danix-kit
+          test -f danix-kit/flake.nix && echo "flake exists"
+          git status
+          git ls-files | grep danix-kit | head
 
       - name: Show workspace
         run: |

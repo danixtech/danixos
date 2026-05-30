@@ -11,12 +11,13 @@
 
   boot.loader.grub = {
     theme = lib.mkForce null;
-    splashImage = /etc/danixos-grub-background.png;
+    splashImage = ../assets/danixos-grub-background.png;
     extraConfig = ''
       set menu_color_normal=white/black
       set menu_color_highlight=cyan/black
       set gfxmode=1920x1080
       set gfxpayload=keep
+      set timeout_style=menu
     '';
   };
 
@@ -33,8 +34,6 @@
   environment.etc."danixos-version".text = version;
   environment.etc."danixos-build".text = buildId;
   environment.etc."danixos-build-date".text = buildDate;
-  environment.etc."danixos-grub-background.png".source =
-    ../assets/danixos-grub-background.png;
 
   environment.systemPackages = with pkgs; [
     # Core utilities

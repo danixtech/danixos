@@ -1,0 +1,3 @@
+[submodule "danix-kit"]
+	path = danix-kit
+	url = git@github.com:danixtech/danix-kit.git
