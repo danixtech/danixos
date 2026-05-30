@@ -21,9 +21,15 @@ jobs:
           path: danix-kit
       - uses: cachix/install-nix-action@v27
 
-      - name: Build ISO
+      - name: Show workspace
         run: |
-          nix build .#iso
+          pwd
+          ls -lah
+          find . -maxdepth 2 -type d
+
+            - name: Build ISO
+              run: |
+                nix build .#iso
 
       - name: Upload ISO
         uses: actions/upload-artifact@v4
