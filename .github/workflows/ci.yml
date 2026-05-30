@@ -28,9 +28,9 @@ jobs:
           ls -lah
           find . -maxdepth 2 -type d
 
-            - name: Build ISO
-              run: |
-                nix build .#iso
+      - name: Build ISO
+        run: |
+          nix build .#iso
 
       - name: Upload ISO
         uses: actions/upload-artifact@v4
