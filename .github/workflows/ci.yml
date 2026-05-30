@@ -15,6 +15,14 @@ jobs:
         run: |
           git ls-remote https://x-access-token:${{ secrets.DANIXKITTOKEN }}@github.com/danixtech/danix-kit.git
 
+      - name: Configure Nix GitHub token
+        run: |
+          mkdir -p ~/.config/nix
+
+          cat > ~/.config/nix/nix.conf <<EOF
+          access-tokens = github.com=${{ secrets.DANIXKITTOKEN }}
+          EOF
+
       - uses: actions/checkout@v4
         with:
           submodules: recursive
